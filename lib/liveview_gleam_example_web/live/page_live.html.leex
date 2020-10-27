@@ -1,0 +1,48 @@
+<section class="container mx-auto py-24 px-4">
+  <div class="w-full md:w-11/12 xl:w-8/12 mx-auto text-left md:text-center">
+    <h1 class="text-4xl md:text-5xl text-gray-900 leading-tight mb-3 font-bold md:font-extrabold">
+      Gleam & LiveView!
+    </h1>
+    <p class="text-lg md:text-xl text-gray-600 mb-6">
+      Let's use some Gleam ✨
+    </p>
+    <button
+      class="mt-8 bg-green-200 p-2 rounded"
+      phx-click="calculate"
+    >
+      Calculate some credits viability
+    </button>
+    <table class="my-8 md:my-16 mx-auto">
+      <thead class="bg-green-200 border border-b-0 border-blue-300">
+        <tr>
+          <th class="px-4">
+            User
+          </th>
+          <th class="px-4">
+            Approved
+          </th>
+        </tr>
+      </thead>
+      <tbody id="users" class="bg-white border-1 border-t-0 border-blue-500">
+        <%= for user <- @users do %>
+          <tr class="mt-2">
+            <td class="px-4">
+              <%= user.name <> " " <> user.last_name %>
+            </td>
+            <td class="px-4">
+              <%= if user.credit_approved do %>
+                <div class="text-green-500">
+                  Approved
+                </div>
+              <% else %>
+                <div class="text-red-700">
+                  Denied
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
